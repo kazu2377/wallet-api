@@ -14,9 +14,8 @@ const PORT = process.env.PORT || 5001; // ポート番号を環境変数から�
 
 if (process.env.NODE_ENV === "production") job.start(); // Start the cron job
 
-app.use(express.json());
-
 app.use(rateLimiter);
+app.use(express.json());
 
 app.use((req, res, next) => {
   console.log("ミドルウェア", req.method);
