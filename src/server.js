@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import express from "express";
 import job from "./config/cron.js";
 import { initDB, sql } from "./config/db.js";
-import rateLimiter from "./middleware/rateLimiter.js";
+// import rateLimiter from "./middleware/rateLimiter.js";
 import transactionsRoute from "./routes/transactionsRoute.js";
 // 環境変数の読み込み
 dotenv.config();
@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 5001; // ポート番号を環境変数から�
 
 if (process.env.NODE_ENV === "production") job.start(); // Start the cron job
 
-app.use(rateLimiter);
+// app.use(rateLimiter);
 app.use(express.json());
 
 app.use((req, res, next) => {
